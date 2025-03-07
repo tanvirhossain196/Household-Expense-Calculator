@@ -19,6 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+
+  /*
   function updateMemberTable() {
     const tbody = document.getElementById("tableBody");
     tbody.innerHTML = "";
@@ -47,6 +49,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  */
+  
+  
   function removeMember() {
     const removeInput = document.getElementById("removeMemberNumber");
     const removeIndex = parseInt(removeInput.value) - 1;
@@ -211,6 +216,19 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Update updateMemberTable function
+  const colors = [
+    "#1a73e8",
+    "#e91e63",
+    "#4caf50",
+    "#ff9800",
+    "#9c27b0",
+    "#3f51b5",
+    "#ff5722",
+    "#795548",
+    "#009688",
+    "#cddc39",
+  ]; // More colors added
+
   function updateMemberTable() {
     const tbody = document.getElementById("tableBody");
     tbody.innerHTML = "";
@@ -221,10 +239,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     members.forEach((member, index) => {
+      const color = colors[index % colors.length]; // Cycle through colors
       const row = document.createElement("tr");
       row.innerHTML = `
       <td>${index + 1}</td>
-      <td>${member.name}</td>
+      <td>
+        <div style="
+          background-color: ${color}; 
+          color: white; 
+          font-weight: bold; 
+          padding: 5px 10px; 
+          border-radius: 5px; 
+          display: inline-block; 
+          text-align: center;
+        ">
+          ${member.name}
+        </div>
+      </td>
       <td>${member.rent.toFixed(2)}</td>
       <td>-</td>
       <td>-</td>

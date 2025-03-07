@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Household Cost Sharing Calculator</title>
+  <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Household Expense Calculator</h1>
+
+    <div id="expenseInputs">
+      <h2>Enter Monthly Bills</h2>
+      <div class="expense-categories">
+        <div class="expense-input">
+          <label>Buwa Bill (৳)</label>
+          <input type="number" id="buwaBill" oninput="calculateShares()">
+        </div>
+        <div class="expense-input">
+          <label>Gas Bill (৳)</label>
+          <input type="number" id="gasBill" oninput="calculateShares()">
+        </div>
+        <div class="expense-input">
+          <label>Moylar Bill (৳)</label>
+          <input type="number" id="moylarBill" oninput="calculateShares()">
+        </div>
+        <div class="expense-input">
+          <label>WiFi Bill (৳)</label>
+          <input type="number" id="wifiBill" oninput="calculateShares()">
+        </div>
+        <div class="expense-input">
+          <label>Current Bill (৳)</label>
+          <input type="number" id="currentBill" oninput="calculateShares()">
+        </div>
+      </div>
+    </div>
+
+    <div class="member-section">
+      <h2>Household Members</h2>
+      <div class="member-input-group">
+        <input type="text" id="memberName" placeholder="Member Name" class="compact-input">
+        <input type="number" id="memberRent" placeholder="Vara (৳)" class="compact-input">
+        <button onclick="addMember()" class="compact-btn">Add Member</button>
+        <button onclick="calculateShares()" class="compact-btn">Calculate</button>
+        <button onclick="generatePDF()" class="compact-btn">Download PDF</button>
+      </div>
+    </div>
+
+    <div id="results">
+      <h2>Cost Distribution</h2>
+      <div class="table-container">
+        <table id="resultsTable">
+          <!-- Update table header in HTML -->
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Member</th>
+              <th>Basha Vara</th>
+              <th>Buwa Bill</th>
+              <th>Gas Bill</th>
+              <th>Moylar Bill</th>
+              <th>Wifi Bill</th>
+              <th>Current Bill</th>
+              <th>Total (Without Basha)</th>
+              <th>Total (With Basha)</th>
+              <th>Select</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+          <tfoot id="tableFooter"></tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+
+  <script src="Sheet.js"></script>
+
+  <div class="footer-text">
+    Created by Md. Tanvir Hossain
+  </div>
+
+
+
+</body>
+
+</html>

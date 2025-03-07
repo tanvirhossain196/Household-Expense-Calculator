@@ -1,0 +1,290 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+  background-color: #f0f2f5;
+}
+
+.container {
+  max-width: 1550px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #1a73e8;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h2 {
+  color: #1a73e8;
+  margin-bottom: 20px;
+}
+
+.input-section {
+  margin-bottom: 30px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #00796b; /* Label color */
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #004d40;
+  border-radius: 4px;
+  background: #e0f2f1;
+  font-size: 16px;
+}
+
+input:focus {
+  border: 1px solid #00796b;
+  background: #b2dfdb;
+  outline: none;
+}
+
+button {
+  background: #1a73e8;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #1557b0;
+}
+
+.hidden {
+  display: none;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+}
+
+td {
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background: #f1f1f1;
+}
+
+tr:hover {
+  background: #d0e8ff;
+}
+
+tfoot td {
+  font-weight: bold;
+  background-color: #004080;
+  color: white;
+}
+
+/* Expense Input Fields */
+.expense-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #e0f7fa;
+  border-radius: 8px;
+}
+
+.expense-input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Different Colors for Members' Names */
+.name-tanvir {
+  color: #e74c3c;
+  font-weight: bold;
+} /* Red */
+.name-shawon {
+  color: #3498db;
+  font-weight: bold;
+} /* Blue */
+.name-imam {
+  color: #2ecc71;
+  font-weight: bold;
+} /* Green */
+.name-shakib {
+  color: #9b59b6;
+  font-weight: bold;
+} /* Purple */
+.name-farhan {
+  color: #e67e22;
+  font-weight: bold;
+} /* Orange */
+.name-rafi {
+  color: #1abc9c;
+  font-weight: bold;
+} /* Teal */
+.name-jawad {
+  color: #f1c40f;
+  font-weight: bold;
+} /* Yellow */
+.name-zasin {
+  color: #e84393;
+  font-weight: bold;
+} /* Pink */
+.name-rahim {
+  color: #16a085;
+  font-weight: bold;
+} /* Dark Teal */
+.name-arif {
+  color: #d35400;
+  font-weight: bold;
+} /* Dark Orange */
+.name-moyla-bill {
+  color: #c0392b;
+  font-weight: bold;
+} /* Dark Red */
+.name-gas-bill {
+  color: #8e44ad;
+  font-weight: bold;
+} /* Dark Purple */
+.name-wifi-bill {
+  color: #2980b9;
+  font-weight: bold;
+} /* Dark Blue */
+.name-current-bill {
+  color: #27ae60;
+  font-weight: bold;
+} /* Dark Green */
+.name-buwa-bill {
+  color: #f39c12;
+  font-weight: bold;
+} /* Dark Yellow */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  th,
+  td {
+    padding: 8px;
+  }
+}
+
+/* Add these CSS styles */
+.member-section {
+  margin: 20px 0;
+  padding: 15px;
+  background: #e3f2fd;
+  border-radius: 8px;
+}
+
+.member-input-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.compact-input {
+  padding: 10px !important;
+  font-size: 14px !important;
+  max-width: 220px;
+  margin: 2px 0 !important;
+}
+
+.compact-btn {
+  padding: 8px 12px !important;
+  font-size: 14px !important;
+  margin: 2px 0 !important;
+}
+
+.checkbox-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox-cell input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}
+
+/* Add CSS for remove button */
+.remove-btn {
+  background: #dc3545 !important;
+  padding: 6px 12px !important;
+  font-size: 13px !important;
+}
+
+.remove-btn:hover {
+  background: #bb2d3b !important;
+}
+
+/* Update colspan for no members row */
+tr td[colspan="12"] {
+  text-align: center;
+  color: #666;
+}
+
+#tableFooter tr {
+  background-color: #f2f2f2; /* Adjust color as needed */
+}
+
+#tableFooter td {
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  border-top: 2px solid #000; /* Optional: adds a border to separate footer */
+}
+
+.footer-text {
+  text-align: right;
+  margin-top: 10px;
+  padding: 5px 170px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #666;
+}

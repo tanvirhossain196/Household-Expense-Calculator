@@ -19,37 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  /*
-  function updateMemberTable() {
-    const tbody = document.getElementById("tableBody");
-    tbody.innerHTML = "";
-
-    if (members.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="11">No members added yet</td></tr>`;
-      return;
-    }
-
-    members.forEach((member, index) => {
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>${index + 1}</td>
-        <td>${member.name}</td>
-        <td>${member.rent.toFixed(2)}</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td><input type="checkbox" class="member-select"></td>
-      `;
-      tbody.appendChild(row);
-    });
-  }
-
-  */
-
   function removeMember() {
     const removeInput = document.getElementById("removeMemberNumber");
     const removeIndex = parseInt(removeInput.value) - 1;

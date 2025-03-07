@@ -274,7 +274,6 @@ tr td[colspan="12"] {
 }
 
 #tableFooter td {
-  text-align: center;
   padding: 10px;
   font-weight: bold;
   border-top: 2px solid #000; /* Optional: adds a border to separate footer */
@@ -289,6 +288,6 @@ tr td[colspan="12"] {
   color: #666;
 }
 
-.tableFooter{
-  width: 18px;
+.tableFooter {
+  width: 100%;
 }

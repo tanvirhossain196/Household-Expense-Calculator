@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-
   /*
   function updateMemberTable() {
     const tbody = document.getElementById("tableBody");
@@ -50,8 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   */
-  
-  
+
   function removeMember() {
     const removeInput = document.getElementById("removeMemberNumber");
     const removeIndex = parseInt(removeInput.value) - 1;
@@ -161,7 +159,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function generatePDF() {
     const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
+    const doc = new jsPDF({
+      orientation: "landscape", // Full-width in landscape mode
+      unit: "mm",
+      format: "a4",
+    });
+
+    // Title
+    doc.setFontSize(16);
+    doc.setFont("helvetica", "bold");
+    doc.text("Household Expense Report", doc.internal.pageSize.width / 2, 15, {
+      align: "center",
+    });
 
     const rows = document.querySelectorAll("#tableBody tr");
 
@@ -171,20 +180,51 @@ document.addEventListener("DOMContentLoaded", function () {
 
       return [
         index + 1, // Serial Number
-        cells[1].textContent, // Name
-        cells[2].textContent, // Rent
-        cells[3].textContent,
-        cells[4].textContent,
-        cells[5].textContent,
-        cells[6].textContent,
-        cells[7].textContent,
-        cells[8].textContent,
-        cells[9].textContent,
-        checkbox.checked ? "\u2713" : "", // Unicode for checkmark ✔
+        cells[1].textContent.trim(), // Name
+        cells[2].textContent.trim(), // Rent
+        cells[3].textContent.trim(),
+        cells[4].textContent.trim(),
+        cells[5].textContent.trim(),
+        cells[6].textContent.trim(),
+        cells[7].textContent.trim(),
+        cells[8].textContent.trim(),
+        cells[9].textContent.trim(),
+        checkbox.checked ? "✔" : "", // Checkmark for selection
       ];
     });
 
     doc.autoTable({
+      startY: 25, // Start table below title
+      margin: { top: 20, left: 5, right: 5 }, // Use full page width
+      styles: {
+        fontSize: 10,
+        cellPadding: 2,
+        lineWidth: 0.2,
+        lineColor: [0, 0, 0],
+      },
+      headStyles: {
+        fillColor: [0, 120, 255],
+        textColor: 255,
+        fontStyle: "bold",
+        halign: "center",
+      },
+      alternateRowStyles: {
+        fillColor: [240, 240, 240],
+      },
+      columnStyles: {
+        0: { cellWidth: 10, halign: "center" }, // S.No
+        1: { cellWidth: 40, halign: "left" }, // Name
+        2: { cellWidth: 25, halign: "right" }, // Rent
+        3: { cellWidth: "auto", halign: "right" },
+        4: { cellWidth: "auto", halign: "right" },
+        5: { cellWidth: "auto", halign: "right" },
+        6: { cellWidth: "auto", halign: "right" },
+        7: { cellWidth: "auto", halign: "right" },
+        8: { cellWidth: 30, halign: "right" }, // Total (Without Basha)
+        9: { cellWidth: 30, halign: "right" }, // Total (With Basha)
+        10: { cellWidth: 15, halign: "center" }, // Selected
+      },
+      theme: "grid",
       head: [
         [
           "S.No",
@@ -201,16 +241,19 @@ document.addEventListener("DOMContentLoaded", function () {
         ],
       ],
       body: data,
-      theme: "grid",
-      styles: { fontSize: 10 },
-      headStyles: { fillColor: [0, 120, 255] },
-      footStyles: { fillColor: [0, 64, 128] },
     });
 
-    // Add footer with text at the bottom corner
+    // Footer
     const pageHeight = doc.internal.pageSize.height;
     doc.setFontSize(10);
-    doc.text("Created by Md. Tanvir Hossain", 150, pageHeight - 10);
+    doc.text(
+      "Created by Md. Tanvir Hossain",
+      doc.internal.pageSize.width - 10,
+      pageHeight - 10,
+      {
+        align: "right",
+      }
+    );
 
     doc.save("household_expenses.pdf");
   }
